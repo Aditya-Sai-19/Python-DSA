@@ -1,4 +1,6 @@
 
+from collections import deque
+
 # Creating a Binary Tree
 class Node:
     def __init__(self,val):
@@ -60,3 +62,39 @@ def postorder(Node):
 print("Postorder Traversal\n-----------------------------------------")
 postorder(drinks)
 print("\n-------------------------------------------")
+
+# Finding the height of the Binary Tree [ Using DFS ]
+
+def DFSHeight(Node):
+    if Node == None:
+        return 0
+    LH = DFSHeight(Node.left)
+    RH = DFSHeight(Node.right)
+    height = 1 + max(LH,RH)
+    return height
+
+h1 = DFSHeight(drinks)
+
+print(f"Height of the Binary tree using DFS is : {h1}")
+print("-------------------------------------------")
+
+# Finding the height of the Binary Tree [ Using BFS ]
+
+def BFSHeight(Node):
+    queue = deque()
+    height = 0
+    queue.append(Node)
+    while len(queue)!=0:
+        level_size = len(queue)  # here level_size is the number of node in that specific level
+        height += 1
+        for _ in range(level_size):
+            e = queue.popleft()
+            if e.left is not None:
+                queue.append(e.left)
+            if e.right is not None:
+                queue.append(e.right)
+    return height
+
+h2 = BFSHeight(drinks)
+print(f"Height of the Binary tree using BFS is : {h2}")
+print("-------------------------------------------")
