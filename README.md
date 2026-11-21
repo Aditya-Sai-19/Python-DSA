@@ -9,7 +9,7 @@ My personal notes and practice code while learning data structures and algorithm
 | `Taking_multiple_inputs.py` | Reading a single value and several space-separated values from the user with `input()`, `map()` and `split()` |
 | `2D_array.py` | Building an `N x M` matrix, filling it from input, and transposing it two ways — in place and into a new matrix |
 | `LinkedList.py` | Singly linked list with a `Node` class: insert at head, insert at tail, `__len__` and `__str__` |
-| `Binary_tree.py` | Binary tree built from `Node` objects: preorder, inorder and postorder traversal, height via DFS and BFS, diameter, and a balanced check |
+| `Binary_tree.py` | Binary tree built from `Node` objects: preorder, inorder and postorder traversal, height via DFS and BFS, diameter, a balanced check, and the top, bottom, left and right views |
 | `array_rotation.py` | Rotating a list right by 1 and by `K` places: slice reassignment vs. `nums[:]` in place, then brute-force, slice and reversal-based versions |
 | `hashing.py` | Counting occurrences with a list, a dict, and a 26-slot array indexed by `ord(ch) - 97` |
 
