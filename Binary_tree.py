@@ -102,13 +102,17 @@ print("-------------------------------------------")
 # Find the diameter of the Binary Tree
 
 def diameter(Node):
-    if Node == None:
-        return 0
-    LongestDepth = 0
-    LH = DFSHeight(Node.left)
-    RH = DFSHeight(Node.right)
 
-    LongestDepth = max(LongestDepth,LH+RH)
+    LongestDepth = 0
+    def Height(Node):
+        nonlocal LongestDepth
+        if Node == None:
+            return 0
+        LH = Height(Node.left)
+        RH = Height(Node.right)
+        LongestDepth = max(LongestDepth,LH+RH)
+        return 1+max(LH,RH)
+    Height(Node)
     return LongestDepth
 
 diameter = diameter(drinks)
