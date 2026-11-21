@@ -140,3 +140,94 @@ if balanced == -1:
     print(f"The Binary Tree is not Balanced")
 else:
     print(f"The Binary Tree is Balanced")
+
+# Top View of a Binary Tree
+
+def TopView(Node):
+    if Node == None:
+        return None
+    ans = []
+    queue = deque()
+    result = {}
+    queue.append((Node,0))
+    while queue:
+        e,line = queue.popleft()
+        if line not in result:
+            result[line] = e.val
+        if e.left:
+            queue.append((e.left,line-1))
+        if e.right:
+            queue.append((e.right,line+1))
+    for value in sorted(result.items()):
+        ans.append(value[1])
+    return ans
+Top = TopView(drinks)
+print("-------------------------------------------")
+print(f"Top view of the Binary tree is: {Top}\n-------------------------------------------")
+
+# To find the Bottom View of the Binary Tree
+
+def BottomView(Node):
+    if Node == None:
+        return None
+    ans = []
+    queue = deque()
+    result = {}
+    queue.append((Node,0))
+    while queue:
+        e,line = queue.popleft()
+        result[line] = e.val
+        if e.left:
+            queue.append((e.left,line-1))
+        if e.right:
+            queue.append((e.right,line+1))
+    for key,value in sorted(result.items()):
+        ans.append(value)
+    return ans
+
+Bottom = BottomView(drinks)
+print(f"The Bottom view of the Binary tree is : {Bottom}")
+print("-------------------------------------------")
+
+def RightView(Node):
+    if Node == None:
+        return None
+    queue = deque()
+    result = []
+    queue.append(Node)
+    while queue:
+        nodes = len(queue)
+        for i in range(nodes):
+            e = queue.popleft()
+            if e.left:
+                queue.append(e.left)
+            if e.right:
+                queue.append(e.right)
+            if i==nodes-1:
+                result.append(e.val)
+    return result
+
+Right = RightView(drinks)
+print(f"Right View of the Binary Tree is : {Right}\n--------------------------------------------")
+
+def LeftView(Node):
+    if Node == None:
+        return None
+    queue = deque()
+    result = []
+    queue.append(Node)
+    while queue:
+        nodes = len(queue)
+        for i in range(nodes):
+            e = queue.popleft()
+            if e.left:
+                queue.append(e.left)
+            if e.right:
+                queue.append(e.right)
+            if i==0:
+                result.append(e.val)
+    return result
+
+Left = LeftView(drinks)
+print(f"Left View of the Binary Tree is : {Left}")
+print("-------------------------------------------")
