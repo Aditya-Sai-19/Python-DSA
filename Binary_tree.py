@@ -98,3 +98,18 @@ def BFSHeight(Node):
 h2 = BFSHeight(drinks)
 print(f"Height of the Binary tree using BFS is : {h2}")
 print("-------------------------------------------")
+
+# Find the diameter of the Binary Tree
+
+def diameter(Node):
+    if Node == None:
+        return 0
+    LongestDepth = 0
+    LH = DFSHeight(Node.left)
+    RH = DFSHeight(Node.right)
+
+    LongestDepth = max(LongestDepth,LH+RH)
+    return LongestDepth
+
+diameter = diameter(drinks)
+print(f"The diameter of the Binary tree is : {diameter}\n-------------------------------------------")
