@@ -113,3 +113,26 @@ def diameter(Node):
 
 diameter = diameter(drinks)
 print(f"The diameter of the Binary tree is : {diameter}\n-------------------------------------------")
+
+# Check if the Binary tree is balanced or not 
+
+def checkBalance(Node):
+    if Node==None:
+        return 0
+    LH = checkBalance(Node.left)
+    if LH == -1:
+        return -1
+    RH = checkBalance(Node.right)
+    if RH == -1:
+        return -1
+    balance = abs(LH-RH)
+    if balance>1:
+        return -1
+
+    return 1+max(LH,RH)
+
+balanced = checkBalance(drinks)
+if balanced == -1:
+    print(f"The Binary Tree is not Balanced")
+else:
+    print(f"The Binary Tree is Balanced")
